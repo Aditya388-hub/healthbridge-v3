@@ -7,10 +7,9 @@ import { ReactNode } from 'react';
 interface ScrollAnimateProps {
     children: ReactNode;
     className?: string;
-    delay?: number; // Delay in ms
+    delay?: number;
     threshold?: number;
-    staggerIndex?: number; // For staggered lists
-    as?: React.ElementType; // To render as different tag (e.g., 'main', 'section')
+    staggerIndex?: number;
 }
 
 export default function ScrollAnimate({
