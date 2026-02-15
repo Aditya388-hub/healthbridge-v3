@@ -32,9 +32,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthProvider>
           <Navbar />
-          <ScrollAnimate as="main" threshold={0} className="main-content">
-            {children}
-          </ScrollAnimate>
+          <main className="main-content">
+            <ScrollAnimate threshold={0}>
+              {children}
+            </ScrollAnimate>
+          </main>
           <Footer />
         </AuthProvider>
       </body>

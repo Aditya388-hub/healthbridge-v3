@@ -18,35 +18,26 @@ export default function ScrollAnimate({
     className = "",
     delay = 0,
     threshold = 0.1,
-    staggerIndex = 0,
-    as: Component = motion.div
+    staggerIndex = 0
 }: ScrollAnimateProps) {
     const { ref, controls } = useScrollAnimation(threshold);
 
     const variants = {
-        hidden: { opacity: 0, y: 50, scale: 0.95 },
+        hidden: { opacity: 0, y: 30, scale: 0.98 },
         visible: {
             opacity: 1,
             y: 0,
             scale: 1,
             transition: {
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1], // Custom cubic bezier for "pop" effect
+                duration: 0.5,
+                ease: [0.22, 1, 0.36, 1],
                 delay: (delay / 1000) + (staggerIndex * 0.1)
             }
         }
     };
 
-    // If 'as' is not a motion component, we need to wrap it or use motion(Component)
-    // But for simplicity in this project, we usually use div or section.
-    // To support 'as="main"', we can dynamically create the motion component if needed, 
-    // or just stick to basic motion.div / motion.section if passed explicitly.
-    // For now, simpler approach:
-
-    const MotionComponent = motion(Component as any);
-
     return (
-        <MotionComponent
+        <motion.div
             ref={ref}
             initial="hidden"
             animate={controls}
@@ -54,6 +45,6 @@ export default function ScrollAnimate({
             className={className}
         >
             {children}
-        </MotionComponent>
+        </motion.div>
     );
 }
